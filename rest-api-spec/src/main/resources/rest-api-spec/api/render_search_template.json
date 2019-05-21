@@ -1,7 +1,8 @@
 {
   "render_search_template":{
     "documentation":{
-      "url":"http://www.elasticsearch.org/guide/en/elasticsearch/reference/master/search-template.html"
+      "url":"http://www.elasticsearch.org/guide/en/elasticsearch/reference/master/search-template.html",
+      "description":"Allows to use the Mustache language to pre-render a search definition."
     },
     "url":{
       "paths":[

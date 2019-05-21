@@ -1,7 +1,8 @@
 {
   "cat.master":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-master.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-master.html",
+      "description":"Returns information about the master node."
     },
     "url":{
       "paths":[

@@ -1,7 +1,8 @@
 {
   "indices.recovery":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-recovery.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-recovery.html",
+      "description":"Returns information about ongoing index shard recoveries."
     },
     "url":{
       "paths":[

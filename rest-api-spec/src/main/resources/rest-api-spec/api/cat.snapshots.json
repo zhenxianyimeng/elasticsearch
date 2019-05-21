@@ -1,7 +1,8 @@
 {
   "cat.snapshots":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-snapshots.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-snapshots.html",
+      "description":"Returns all snapshots in a specific repository."
     },
     "url":{
       "paths":[

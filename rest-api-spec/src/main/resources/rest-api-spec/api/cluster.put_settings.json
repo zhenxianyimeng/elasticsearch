@@ -1,7 +1,8 @@
 {
   "cluster.put_settings":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-update-settings.html",
+      "description":"Updates the cluster settings."
     },
     "url":{
       "paths":[

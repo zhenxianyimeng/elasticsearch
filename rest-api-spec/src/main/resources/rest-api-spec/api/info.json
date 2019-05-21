@@ -1,7 +1,8 @@
 {
   "info":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/"
+      "url":"http://www.elastic.co/guide/",
+      "description":"Returns basic information about the cluster."
     },
     "url":{
       "paths":[

@@ -1,7 +1,8 @@
 {
   "nodes.usage":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-usage.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-usage.html",
+      "description":"Returns low-level information about REST actions usage on nodes."
     },
     "url":{
       "paths":[

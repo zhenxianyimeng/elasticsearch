@@ -1,7 +1,8 @@
 {
   "indices.exists_template":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
+      "description":"Returns information about whether a particular index template exists."
     },
     "url":{
       "paths":[

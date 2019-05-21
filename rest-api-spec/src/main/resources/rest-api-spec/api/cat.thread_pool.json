@@ -1,7 +1,8 @@
 {
   "cat.thread_pool":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-thread-pool.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-thread-pool.html",
+      "description":"Returns cluster-wide thread pool statistics per node.\nBy default the active, queue and rejected statistics are returned for all thread pools."
     },
     "url":{
       "paths":[

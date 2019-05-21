@@ -1,7 +1,8 @@
 {
   "indices.refresh":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-refresh.html",
+      "description":"Performs the refresh operation in one or more indices."
     },
     "url":{
       "paths":[

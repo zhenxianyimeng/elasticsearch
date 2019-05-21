@@ -1,7 +1,8 @@
 {
   "clear_scroll":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-scroll.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-scroll.html",
+      "description":"Explicitly clears the search context for a scroll."
     },
     "url":{
       "paths":[

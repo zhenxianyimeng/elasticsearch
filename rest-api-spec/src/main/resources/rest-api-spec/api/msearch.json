@@ -1,7 +1,8 @@
 {
   "msearch":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-multi-search.html",
+      "description":"Allows to execute several search operations in one request."
     },
     "url":{
       "paths":[

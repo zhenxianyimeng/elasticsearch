@@ -1,7 +1,8 @@
 {
   "cat.help":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat.html",
+      "description":"Returns help for the Cat APIs."
     },
     "url":{
       "paths":[

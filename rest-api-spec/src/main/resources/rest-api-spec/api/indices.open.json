@@ -1,7 +1,8 @@
 {
   "indices.open":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-open-close.html",
+      "description":"Opens an index."
     },
     "url":{
       "paths":[

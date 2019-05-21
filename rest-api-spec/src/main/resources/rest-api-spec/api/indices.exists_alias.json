@@ -1,7 +1,8 @@
 {
   "indices.exists_alias":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "description":"Returns information about whether a particular alias exists."
     },
     "url":{
       "paths":[

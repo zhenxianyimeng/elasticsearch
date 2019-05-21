@@ -1,7 +1,8 @@
 {
   "explain":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-explain.html",
+      "description":"Returns information about why a specific matches (or doesn't match) a query."
     },
     "url":{
       "paths":[

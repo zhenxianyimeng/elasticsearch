@@ -1,7 +1,8 @@
 {
   "cat.shards":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-shards.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-shards.html",
+      "description":"Provides a detailed view of shard allocation on nodes."
     },
     "url":{
       "paths":[

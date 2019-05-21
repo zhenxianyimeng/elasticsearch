@@ -1,7 +1,8 @@
 {
   "nodes.hot_threads":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-hot-threads.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-nodes-hot-threads.html",
+      "description":"Returns information about hot threads on each node in the cluster."
     },
     "url":{
       "paths":[

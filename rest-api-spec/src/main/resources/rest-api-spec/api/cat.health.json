@@ -1,7 +1,8 @@
 {
   "cat.health":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-health.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-health.html",
+      "description":"Returns a concise representation of the cluster health."
     },
     "url":{
       "paths":[

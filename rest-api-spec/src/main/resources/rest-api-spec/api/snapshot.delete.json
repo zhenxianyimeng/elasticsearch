@@ -1,7 +1,8 @@
 {
   "snapshot.delete":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-snapshots.html",
+      "description":"Deletes a snapshot."
     },
     "url":{
       "paths":[

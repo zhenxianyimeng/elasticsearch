@@ -1,7 +1,8 @@
 {
   "indices.put_template":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-templates.html",
+      "description":"Creates or updates an index template."
     },
     "url":{
       "paths":[

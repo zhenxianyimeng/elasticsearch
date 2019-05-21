@@ -1,7 +1,8 @@
 {
   "indices.get_mapping":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-get-mapping.html",
+      "description":"Returns mappings for one or more indices."
     },
     "url":{
       "paths":[

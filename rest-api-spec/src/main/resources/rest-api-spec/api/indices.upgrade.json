@@ -1,7 +1,8 @@
 {
   "indices.upgrade":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-upgrade.html",
+      "description":"The _upgrade API is no longer useful and will be removed."
     },
     "url":{
       "paths":[

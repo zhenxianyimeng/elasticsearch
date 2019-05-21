@@ -1,7 +1,8 @@
 {
   "cat.nodes":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-nodes.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-nodes.html",
+      "description":"Returns basic statistics about performance of cluster nodes."
     },
     "url":{
       "paths":[

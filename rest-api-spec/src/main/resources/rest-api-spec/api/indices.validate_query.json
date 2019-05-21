@@ -1,7 +1,8 @@
 {
   "indices.validate_query":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-validate.html",
+      "description":"Allows a user to validate a potentially expensive query without executing it."
     },
     "url":{
       "paths":[

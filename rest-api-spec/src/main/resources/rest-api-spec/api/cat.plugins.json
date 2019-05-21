@@ -1,7 +1,8 @@
 {
   "cat.plugins":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-plugins.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-plugins.html",
+      "description":"Returns information about installed plugins across nodes node."
     },
     "url":{
       "paths":[

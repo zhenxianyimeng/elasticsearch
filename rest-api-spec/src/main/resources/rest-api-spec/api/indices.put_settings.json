@@ -1,7 +1,8 @@
 {
   "indices.put_settings":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-update-settings.html",
+      "description":"Updates the index settings."
     },
     "url":{
       "paths":[

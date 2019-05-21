@@ -1,7 +1,8 @@
 {
   "cluster.state":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-state.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-state.html",
+      "description":"Returns a comprehensive information about the state of the cluster."
     },
     "url":{
       "paths":[

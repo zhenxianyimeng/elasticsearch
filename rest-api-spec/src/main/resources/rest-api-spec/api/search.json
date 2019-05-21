@@ -1,7 +1,8 @@
 {
   "search":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-search.html",
+      "description":"Returns results matching a query."
     },
     "url":{
       "paths":[

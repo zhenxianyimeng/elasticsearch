@@ -1,7 +1,8 @@
 {
   "indices.delete_alias":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "description":"Deletes an alias."
     },
     "url":{
       "paths":[

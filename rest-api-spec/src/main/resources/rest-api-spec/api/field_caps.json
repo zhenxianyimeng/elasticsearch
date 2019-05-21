@@ -1,7 +1,8 @@
 {
   "field_caps":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-field-caps.html",
+      "description":"Returns the information about the capabilities of fields among multiple indices."
     },
     "url":{
       "paths":[

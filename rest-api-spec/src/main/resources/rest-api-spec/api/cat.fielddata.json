@@ -1,7 +1,8 @@
 {
   "cat.fielddata":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-fielddata.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-fielddata.html",
+      "description":"Shows how much heap memory is currently being used by fielddata on every data node in the cluster."
     },
     "url":{
       "paths":[

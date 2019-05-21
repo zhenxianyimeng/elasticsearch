@@ -1,7 +1,8 @@
 {
   "indices.exists_type":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-types-exists.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-types-exists.html",
+      "description":"Returns information about whether a particular document type exists. (DEPRECATED)"
     },
     "url":{
       "paths":[

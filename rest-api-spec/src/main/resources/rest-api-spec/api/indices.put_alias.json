@@ -1,7 +1,8 @@
 {
   "indices.put_alias":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-aliases.html",
+      "description":"Creates or updates an alias."
     },
     "url":{
       "paths":[

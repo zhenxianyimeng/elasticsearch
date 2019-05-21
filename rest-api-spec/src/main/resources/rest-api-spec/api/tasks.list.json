@@ -1,7 +1,8 @@
 {
   "tasks.list":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/tasks.html",
+      "description":"Returns a list of tasks."
     },
     "url":{
       "paths":[

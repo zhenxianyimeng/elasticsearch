@@ -1,7 +1,8 @@
 {
   "cluster.remote_info":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-remote-info.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-remote-info.html",
+      "description":"Returns the information about configured remote clusters."
     },
     "url":{
       "paths":[

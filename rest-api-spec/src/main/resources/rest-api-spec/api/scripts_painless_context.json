@@ -1,7 +1,8 @@
 {
   "scripts_painless_context":{
     "documentation":{
-      "url":null
+      "url":null,
+      "description":"Allows to query context information."
     },
     "url":{
       "paths":[

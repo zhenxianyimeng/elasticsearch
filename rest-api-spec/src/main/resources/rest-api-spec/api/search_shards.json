@@ -1,7 +1,8 @@
 {
   "search_shards":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-shards.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-shards.html",
+      "description":"Returns information about the indices and shards that a search request would be executed against."
     },
     "url":{
       "paths":[

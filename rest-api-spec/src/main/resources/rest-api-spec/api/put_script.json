@@ -1,7 +1,8 @@
 {
   "put_script":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/modules-scripting.html",
+      "description":"Creates or updates a script."
     },
     "url":{
       "paths":[

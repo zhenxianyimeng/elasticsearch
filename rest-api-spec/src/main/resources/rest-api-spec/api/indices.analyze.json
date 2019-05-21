@@ -1,7 +1,8 @@
 {
   "indices.analyze":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-analyze.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-analyze.html",
+      "description":"Performs the analysis process on a text and return the tokens breakdown of the text."
     },
     "url":{
       "paths":[

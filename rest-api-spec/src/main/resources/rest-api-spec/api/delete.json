@@ -1,7 +1,8 @@
 {
   "delete":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-delete.html",
+      "description":"Removes a document from the index."
     },
     "url":{
       "paths":[

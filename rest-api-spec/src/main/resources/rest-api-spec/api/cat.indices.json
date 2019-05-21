@@ -1,7 +1,8 @@
 {
   "cat.indices":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-indices.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-indices.html",
+      "description":"Returns information about indices: number of primaries and replicas, document counts, disk size, ..."
     },
     "url":{
       "paths":[

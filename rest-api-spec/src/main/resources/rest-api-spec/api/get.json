@@ -1,7 +1,8 @@
 {
   "get":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
+      "description":"Returns a document."
     },
     "url":{
       "paths":[

@@ -1,7 +1,8 @@
 {
   "indices.flush_synced":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-synced-flush.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-synced-flush.html",
+      "description":"Performs a synced flush operation on one or more indices."
     },
     "url":{
       "paths":[

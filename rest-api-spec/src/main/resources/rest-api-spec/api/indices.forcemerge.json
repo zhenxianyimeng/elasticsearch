@@ -1,7 +1,8 @@
 {
   "indices.forcemerge":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-forcemerge.html",
+      "description":"Performs the force merge operation on one or more indices."
     },
     "url":{
       "paths":[

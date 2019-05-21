@@ -1,7 +1,8 @@
 {
   "indices.delete":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-delete-index.html",
+      "description":"Deletes an index."
     },
     "url":{
       "paths":[

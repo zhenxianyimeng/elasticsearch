@@ -1,7 +1,8 @@
 {
   "indices.stats":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-stats.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-stats.html",
+      "description":"Provides statistics on operations happening in an index."
     },
     "url":{
       "paths":[

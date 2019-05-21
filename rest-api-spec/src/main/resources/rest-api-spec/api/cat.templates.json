@@ -1,7 +1,8 @@
 {
   "cat.templates":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-templates.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-templates.html",
+      "description":"Returns information about existing templates."
     },
     "url":{
       "paths":[

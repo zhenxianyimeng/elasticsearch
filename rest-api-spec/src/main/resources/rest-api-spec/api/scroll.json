@@ -1,7 +1,8 @@
 {
   "scroll":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-scroll.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/search-request-scroll.html",
+      "description":"Allows to retrieve a large numbers of results from a single search request."
     },
     "url":{
       "paths":[

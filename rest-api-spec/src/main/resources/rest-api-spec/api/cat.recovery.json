@@ -1,7 +1,8 @@
 {
   "cat.recovery":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-recovery.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cat-recovery.html",
+      "description":"Returns information about index shard recoveries, both on-going completed."
     },
     "url":{
       "paths":[

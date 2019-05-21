@@ -1,7 +1,8 @@
 {
   "termvectors":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-termvectors.html",
+      "description":"Returns information and statistics about terms in the fields of a particular document."
     },
     "url":{
       "paths":[

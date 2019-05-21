@@ -1,7 +1,8 @@
 {
   "msearch_template":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/current/search-multi-search.html",
+      "description":"Allows to execute several search template operations in one request."
     },
     "url":{
       "paths":[

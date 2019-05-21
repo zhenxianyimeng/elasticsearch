@@ -1,7 +1,8 @@
 {
   "indices.segments":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-segments.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/indices-segments.html",
+      "description":"Provides low-level information about segments in a Lucene index."
     },
     "url":{
       "paths":[

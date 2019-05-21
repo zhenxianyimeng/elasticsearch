@@ -1,7 +1,8 @@
 {
   "exists_source":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/docs-get.html",
+      "description":"Returns information about whether a document source exists in an index."
     },
     "url":{
       "paths":[

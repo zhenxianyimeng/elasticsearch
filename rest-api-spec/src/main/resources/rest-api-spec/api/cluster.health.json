@@ -1,7 +1,8 @@
 {
   "cluster.health":{
     "documentation":{
-      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-health.html"
+      "url":"http://www.elastic.co/guide/en/elasticsearch/reference/master/cluster-health.html",
+      "description":"Returns basic information about the health of the cluster."
     },
     "url":{
       "paths":[
