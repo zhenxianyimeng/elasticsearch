@@ -1,16 +1,20 @@
 {
-  "scripts_painless_context": {
-    "methods": ["GET"],
-    "url": {
-      "path": "/_scripts/painless/_context",
-      "paths": ["/_scripts/painless/_context"],
-      "parts": {
-      },
-      "params": {
-        "context" : {
-          "type" : "string",
-          "description" : "Select a specific context to retrieve API information about"
+  "scripts_painless_context":{
+    "documentation":{
+      "url":null
+    },
+    "url":{
+      "paths":[
+        {
+          "path":"/_scripts/painless/_context",
+          "method":"GET"
         }
+      ]
+    },
+    "params":{
+      "context":{
+        "type":"string",
+        "description":"Select a specific context to retrieve API information about"
       }
     }
   }
