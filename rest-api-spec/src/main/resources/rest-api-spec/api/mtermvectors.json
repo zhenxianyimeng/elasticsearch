@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_mtermvectors",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_mtermvectors",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",

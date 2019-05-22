@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/fielddata",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/fielddata/{fields}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "fields":{
               "type":"list",

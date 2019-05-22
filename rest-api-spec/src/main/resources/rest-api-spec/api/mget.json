@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_mget",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_mget",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",
@@ -22,7 +28,10 @@
         },
         {
           "path":"/{index}/{type}/_mget",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",

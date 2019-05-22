@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"/{index}/_termvectors/{id}",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",
@@ -23,7 +26,10 @@
         },
         {
           "path":"/{index}/_termvectors",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",

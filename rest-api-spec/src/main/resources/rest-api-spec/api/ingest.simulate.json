@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_ingest/pipeline/_simulate",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/_ingest/pipeline/{id}/_simulate",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "id":{
               "type":"string",

@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_snapshot/{repository}/_verify",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "repository":{
               "type":"string",

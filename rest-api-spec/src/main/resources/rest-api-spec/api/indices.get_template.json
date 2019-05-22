@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_template",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_template/{name}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "name":{
               "type":"list",

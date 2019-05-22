@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_ingest/processor/grok",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },

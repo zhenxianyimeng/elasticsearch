@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cluster/stats",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cluster/stats/nodes/{node_id}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",

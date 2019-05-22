@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/{index}/_doc/{id}",
-          "method":"PUT",
+          "methods":[
+            "PUT"
+          ],
           "parts":{
             "id":{
               "type":"string",
@@ -23,7 +25,9 @@
         },
         {
           "path":"/{index}/_doc",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",
@@ -34,7 +38,9 @@
         },
         {
           "path":"/{index}/{type}",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",
@@ -54,7 +60,9 @@
         },
         {
           "path":"/{index}/{type}/{id}",
-          "method":"PUT",
+          "methods":[
+            "PUT"
+          ],
           "parts":{
             "id":{
               "type":"string",

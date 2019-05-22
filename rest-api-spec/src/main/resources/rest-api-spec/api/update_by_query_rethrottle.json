@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_update_by_query/{task_id}/_rethrottle",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "task_id":{
               "type":"string",

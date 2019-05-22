@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_field_caps",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_field_caps",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_search_shards",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_search_shards",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

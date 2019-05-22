@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_render/template",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/_render/template/{id}",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "id":{
               "type":"string",

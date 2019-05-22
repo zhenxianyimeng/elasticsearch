@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/{index}/_mapping/{type}",
-          "method":"HEAD",
+          "methods":[
+            "HEAD"
+          ],
           "parts":{
             "index":{
               "type":"list",

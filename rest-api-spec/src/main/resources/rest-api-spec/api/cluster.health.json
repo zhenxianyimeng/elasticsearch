@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cluster/health",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cluster/health/{index}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

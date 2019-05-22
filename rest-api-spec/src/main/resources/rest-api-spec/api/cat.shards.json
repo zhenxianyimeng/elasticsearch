@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/shards",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/shards/{index}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

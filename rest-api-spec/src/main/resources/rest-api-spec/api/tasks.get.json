@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_tasks/{task_id}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "task_id":{
               "type":"string",

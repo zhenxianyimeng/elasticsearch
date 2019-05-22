@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/",
-          "method":"HEAD"
+          "methods":[
+            "HEAD"
+          ]
         }
       ]
     },

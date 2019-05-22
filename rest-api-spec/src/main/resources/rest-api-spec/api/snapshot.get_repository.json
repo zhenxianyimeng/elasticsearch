@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_snapshot",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_snapshot/{repository}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "repository":{
               "type":"list",

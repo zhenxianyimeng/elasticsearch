@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_count",
-          "method":"POST"
+          "methods":[
+            "POST",
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_count",
-          "method":"POST",
+          "methods":[
+            "POST",
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -22,7 +28,10 @@
         },
         {
           "path":"/{index}/{type}/_count",
-          "method":"POST",
+          "methods":[
+            "POST",
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

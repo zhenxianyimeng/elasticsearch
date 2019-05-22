@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cluster/state",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cluster/state/{metric}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "metric":{
               "type":"list",
@@ -32,7 +36,9 @@
         },
         {
           "path":"/_cluster/state/{metric}/{index}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

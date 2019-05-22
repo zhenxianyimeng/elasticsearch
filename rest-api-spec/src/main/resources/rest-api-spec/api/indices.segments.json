@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_segments",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_segments",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

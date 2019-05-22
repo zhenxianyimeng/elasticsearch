@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_upgrade",
-          "method":"POST"
+          "methods":[
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_upgrade",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

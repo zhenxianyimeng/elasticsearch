@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_scripts/painless/_context",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },

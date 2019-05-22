@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_snapshot/{repository}/{snapshot}",
-          "method":"DELETE",
+          "methods":[
+            "DELETE"
+          ],
           "parts":{
             "repository":{
               "type":"string",

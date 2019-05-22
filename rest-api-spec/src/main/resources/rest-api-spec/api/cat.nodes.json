@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_cat/nodes",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },

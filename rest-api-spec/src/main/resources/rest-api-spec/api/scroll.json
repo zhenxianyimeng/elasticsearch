@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_search/scroll",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/_search/scroll/{scroll_id}",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "scroll_id":{
               "type":"string",

@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"/{index}/_split/{target}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",

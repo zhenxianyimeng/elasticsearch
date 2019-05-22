@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_analyze",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_analyze",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"string",

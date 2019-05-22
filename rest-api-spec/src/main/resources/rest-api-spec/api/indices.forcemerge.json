@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_forcemerge",
-          "method":"POST"
+          "methods":[
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_forcemerge",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

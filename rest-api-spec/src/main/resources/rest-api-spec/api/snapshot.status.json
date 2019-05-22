@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_snapshot/_status",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_snapshot/{repository}/_status",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "repository":{
               "type":"string",
@@ -22,7 +26,9 @@
         },
         {
           "path":"/_snapshot/{repository}/{snapshot}/_status",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "repository":{
               "type":"string",

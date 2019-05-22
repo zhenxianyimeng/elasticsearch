@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/{alias}/_rollover",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "alias":{
               "type":"string",
@@ -19,7 +21,9 @@
         },
         {
           "path":"/{alias}/_rollover/{new_index}",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "alias":{
               "type":"string",

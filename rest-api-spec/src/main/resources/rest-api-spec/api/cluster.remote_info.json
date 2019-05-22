@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_remote/info",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },

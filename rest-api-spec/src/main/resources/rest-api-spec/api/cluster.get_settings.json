@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_cluster/settings",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },

@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_flush/synced",
-          "method":"POST"
+          "methods":[
+            "POST",
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_flush/synced",
-          "method":"POST",
+          "methods":[
+            "POST",
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

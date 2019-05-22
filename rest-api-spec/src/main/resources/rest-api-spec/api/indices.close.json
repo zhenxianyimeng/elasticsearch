@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/{index}/_close",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

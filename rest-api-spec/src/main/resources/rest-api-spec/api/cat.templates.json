@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/templates",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/templates/{name}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "name":{
               "type":"string",

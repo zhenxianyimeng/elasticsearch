@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_mapping/field/{fields}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "fields":{
               "type":"list",
@@ -19,7 +21,9 @@
         },
         {
           "path":"/{index}/_mapping/field/{fields}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -34,7 +38,9 @@
         },
         {
           "path":"/_mapping/{type}/field/{fields}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "type":{
               "type":"list",
@@ -54,7 +60,9 @@
         },
         {
           "path":"/{index}/_mapping/{type}/field/{fields}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

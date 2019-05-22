@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_refresh",
-          "method":"POST"
+          "methods":[
+            "POST",
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_refresh",
-          "method":"POST",
+          "methods":[
+            "POST",
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

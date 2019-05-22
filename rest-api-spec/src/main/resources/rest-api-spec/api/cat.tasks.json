@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_cat/tasks",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         }
       ]
     },

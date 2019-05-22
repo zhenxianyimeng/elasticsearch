@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_validate/query",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_validate/query",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -22,7 +28,10 @@
         },
         {
           "path":"/{index}/{type}/_validate/query",
-          "method":"GET",
+          "methods":[
+            "GET",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

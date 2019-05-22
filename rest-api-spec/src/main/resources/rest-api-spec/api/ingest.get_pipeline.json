@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_ingest/pipeline",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_ingest/pipeline/{id}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "id":{
               "type":"string",

@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_ingest/pipeline/{id}",
-          "method":"DELETE",
+          "methods":[
+            "DELETE"
+          ],
           "parts":{
             "id":{
               "type":"string",

@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_alias/{name}",
-          "method":"HEAD",
+          "methods":[
+            "HEAD"
+          ],
           "parts":{
             "name":{
               "type":"list",
@@ -19,7 +21,9 @@
         },
         {
           "path":"/{index}/_alias/{name}",
-          "method":"HEAD",
+          "methods":[
+            "HEAD"
+          ],
           "parts":{
             "index":{
               "type":"list",

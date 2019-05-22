@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/thread_pool",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/thread_pool/{thread_pool_patterns}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "thread_pool_patterns":{
               "type":"list",

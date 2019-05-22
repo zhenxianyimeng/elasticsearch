@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"/{index}/_alias/{name}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -24,7 +27,10 @@
         },
         {
           "path":"/{index}/_aliases/{name}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

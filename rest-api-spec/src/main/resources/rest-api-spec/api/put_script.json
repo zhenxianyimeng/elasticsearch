@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"/_scripts/{id}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "id":{
               "type":"string",
@@ -19,7 +22,10 @@
         },
         {
           "path":"/_scripts/{id}/{context}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "id":{
               "type":"string",

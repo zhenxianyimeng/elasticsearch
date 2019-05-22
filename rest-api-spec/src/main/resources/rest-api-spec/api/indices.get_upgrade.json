@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_upgrade",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_upgrade",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cache/clear",
-          "method":"POST"
+          "methods":[
+            "POST"
+          ]
         },
         {
           "path":"/{index}/_cache/clear",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",

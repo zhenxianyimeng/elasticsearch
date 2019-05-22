@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_shard_stores",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_shard_stores",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

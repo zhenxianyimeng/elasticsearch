@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_reindex",
-          "method":"POST"
+          "methods":[
+            "POST"
+          ]
         }
       ]
     },

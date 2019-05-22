@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_nodes/hot_threads",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_nodes/{node_id}/hot_threads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",
@@ -22,7 +26,9 @@
         },
         {
           "path":"/_cluster/nodes/hotthreads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{},
           "deprecated":{
             "version":"7.0.0",
@@ -31,7 +37,9 @@
         },
         {
           "path":"/_cluster/nodes/{node_id}/hotthreads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",
@@ -45,7 +53,9 @@
         },
         {
           "path":"/_nodes/hotthreads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{},
           "deprecated":{
             "version":"7.0.0",
@@ -54,7 +64,9 @@
         },
         {
           "path":"/_nodes/{node_id}/hotthreads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",
@@ -68,7 +80,9 @@
         },
         {
           "path":"/_cluster/nodes/hot_threads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{},
           "deprecated":{
             "version":"7.0.0",
@@ -77,7 +91,9 @@
         },
         {
           "path":"/_cluster/nodes/{node_id}/hot_threads",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",

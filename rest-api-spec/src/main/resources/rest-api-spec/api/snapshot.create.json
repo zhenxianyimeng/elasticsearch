@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"/_snapshot/{repository}/{snapshot}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "repository":{
               "type":"string",

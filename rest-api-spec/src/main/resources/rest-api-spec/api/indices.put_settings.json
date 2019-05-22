@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_settings",
-          "method":"PUT"
+          "methods":[
+            "PUT"
+          ]
         },
         {
           "path":"/{index}/_settings",
-          "method":"PUT",
+          "methods":[
+            "PUT"
+          ],
           "parts":{
             "index":{
               "type":"list",

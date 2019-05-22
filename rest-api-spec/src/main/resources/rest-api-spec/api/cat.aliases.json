@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/aliases",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/aliases/{name}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "name":{
               "type":"list",

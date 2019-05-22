@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/allocation",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/allocation/{node_id}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",

@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_recovery",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_recovery",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",

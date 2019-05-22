@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_settings",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/{index}/_settings",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -22,7 +26,9 @@
         },
         {
           "path":"/{index}/_settings/{name}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -36,7 +42,9 @@
         },
         {
           "path":"/_settings/{name}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "name":{
               "type":"list",

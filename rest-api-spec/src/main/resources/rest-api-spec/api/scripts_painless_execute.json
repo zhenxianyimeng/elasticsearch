@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"/_scripts/painless/_execute",
-          "method":"GET"
+          "methods":[
+            "GET",
+            "POST"
+          ]
         }
       ]
     },

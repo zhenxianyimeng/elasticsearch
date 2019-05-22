@@ -8,7 +8,10 @@
       "paths":[
         {
           "path":"{index}/_mapping",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -18,7 +21,10 @@
         },
         {
           "path":"/{index}/{type}/_mapping",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -37,7 +43,10 @@
         },
         {
           "path":"/{index}/_mapping/{type}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -56,7 +65,10 @@
         },
         {
           "path":"/{index}/{type}/_mappings",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -75,7 +87,10 @@
         },
         {
           "path":"/{index}/_mappings/{type}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -94,7 +109,10 @@
         },
         {
           "path":"/_mappings/{type}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "type":{
               "type":"string",
@@ -109,7 +127,10 @@
         },
         {
           "path":"{index}/_mappings",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "index":{
               "type":"list",
@@ -123,7 +144,10 @@
         },
         {
           "path":"/_mapping/{type}",
-          "method":"PUT",
+          "methods":[
+            "PUT",
+            "POST"
+          ],
           "parts":{
             "type":{
               "type":"string",

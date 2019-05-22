@@ -8,11 +8,17 @@
       "paths":[
         {
           "path":"/_bulk",
-          "method":"POST"
+          "methods":[
+            "POST",
+            "PUT"
+          ]
         },
         {
           "path":"/{index}/_bulk",
-          "method":"POST",
+          "methods":[
+            "POST",
+            "PUT"
+          ],
           "parts":{
             "index":{
               "type":"string",
@@ -22,7 +28,10 @@
         },
         {
           "path":"/{index}/{type}/_bulk",
-          "method":"POST",
+          "methods":[
+            "POST",
+            "PUT"
+          ],
           "parts":{
             "index":{
               "type":"string",

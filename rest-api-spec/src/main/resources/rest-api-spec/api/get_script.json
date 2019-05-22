@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_scripts/{id}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "id":{
               "type":"string",

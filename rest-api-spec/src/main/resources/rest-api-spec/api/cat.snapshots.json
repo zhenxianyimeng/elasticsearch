@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_cat/snapshots",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_cat/snapshots/{repository}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "repository":{
               "type":"list",

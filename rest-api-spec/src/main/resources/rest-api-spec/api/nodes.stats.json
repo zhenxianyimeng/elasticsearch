@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_nodes/stats",
-          "method":"GET"
+          "methods":[
+            "GET"
+          ]
         },
         {
           "path":"/_nodes/{node_id}/stats",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "node_id":{
               "type":"list",
@@ -22,7 +26,9 @@
         },
         {
           "path":"/_nodes/stats/{metric}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "metric":{
               "type":"list",
@@ -45,7 +51,9 @@
         },
         {
           "path":"/_nodes/{node_id}/stats/{metric}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "metric":{
               "type":"list",
@@ -72,7 +80,9 @@
         },
         {
           "path":"/_nodes/stats/{metric}/{index_metric}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "metric":{
               "type":"list",
@@ -117,7 +127,9 @@
         },
         {
           "path":"/_nodes/{node_id}/stats/{metric}/{index_metric}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "metric":{
               "type":"list",

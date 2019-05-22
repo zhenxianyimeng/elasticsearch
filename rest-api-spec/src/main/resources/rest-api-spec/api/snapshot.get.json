@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_snapshot/{repository}/{snapshot}",
-          "method":"GET",
+          "methods":[
+            "GET"
+          ],
           "parts":{
             "repository":{
               "type":"string",

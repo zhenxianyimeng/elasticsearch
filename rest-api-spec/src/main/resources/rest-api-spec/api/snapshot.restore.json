@@ -8,7 +8,9 @@
       "paths":[
         {
           "path":"/_snapshot/{repository}/{snapshot}/_restore",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "repository":{
               "type":"string",

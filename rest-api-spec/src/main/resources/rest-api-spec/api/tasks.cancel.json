@@ -8,11 +8,15 @@
       "paths":[
         {
           "path":"/_tasks/_cancel",
-          "method":"POST"
+          "methods":[
+            "POST"
+          ]
         },
         {
           "path":"/_tasks/{task_id}/_cancel",
-          "method":"POST",
+          "methods":[
+            "POST"
+          ],
           "parts":{
             "task_id":{
               "type":"string",
