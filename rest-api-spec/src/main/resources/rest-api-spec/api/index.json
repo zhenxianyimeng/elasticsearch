@@ -8,7 +8,7 @@
       "paths":[
         {
           "path":"/{index}/_doc/{id}",
-          "method":"POST",
+          "method":"PUT",
           "parts":{
             "id":{
               "type":"string",
@@ -54,7 +54,7 @@
         },
         {
           "path":"/{index}/{type}/{id}",
-          "method":"POST",
+          "method":"PUT",
           "parts":{
             "id":{
               "type":"string",
