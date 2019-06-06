@@ -23,6 +23,8 @@ import org.elasticsearch.common.xcontent.ObjectParser;
 import org.elasticsearch.common.xcontent.XContentParser;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Parser for a {@link ClientYamlSuiteRestApi}.
@@ -51,16 +53,6 @@ public class ClientYamlSuiteRestApiParser {
         while (parser.nextToken() != XContentParser.Token.END_OBJECT || level >= 0) {
 
             if (parser.currentToken() == XContentParser.Token.FIELD_NAME) {
-                if ("methods".equals(parser.currentName())) {
-                    parser.nextToken();
-                    while (parser.nextToken() == XContentParser.Token.VALUE_STRING) {
-                        String method = parser.text();
-                        if (restApi.getMethods().contains(method)) {
-                            throw new IllegalArgumentException("Found duplicate method [" + method + "]");
-                        }
-                        restApi.addMethod(method);
-                    }
-                }
 
                 if ("url".equals(parser.currentName())) {
                     String currentFieldName = "url";
@@ -69,41 +61,70 @@ public class ClientYamlSuiteRestApiParser {
                             currentFieldName = parser.currentName();
                         }
                         if (parser.currentToken() == XContentParser.Token.START_ARRAY && "paths".equals(currentFieldName)) {
-                            while (parser.nextToken() == XContentParser.Token.VALUE_STRING) {
-                                addPathToApi(parser.text(), restApi);
-                            }
-                        }
-                        if (parser.currentToken() == XContentParser.Token.START_ARRAY && "deprecated_paths".equals(currentFieldName)) {
                             while (parser.nextToken() != XContentParser.Token.END_ARRAY) {
-                                if (parser.currentToken() == XContentParser.Token.FIELD_NAME && "path".equals(parser.currentName()))
-                                {
-                                    parser.nextToken();
-                                    addPathToApi(parser.text(), restApi);
-                                }
-                            }
-                        }
+                                String path = null;
+                                Set<String> methods = new HashSet<>();
+                                Set<String> pathParts = new HashSet<>();
+                                while (parser.nextToken() != XContentParser.Token.END_OBJECT) {
+                                    if ("path".equals(parser.currentName())) {
+                                        parser.nextToken();
+                                        path = parser.text();
+                                    }
 
-                        if (parser.currentToken() == XContentParser.Token.START_OBJECT && "parts".equals(currentFieldName)) {
-                            while (parser.nextToken() == XContentParser.Token.FIELD_NAME) {
-                                String part = parser.currentName();
-                                parser.nextToken();
-                                if (parser.currentToken() != XContentParser.Token.START_OBJECT) {
-                                    throw new IllegalArgumentException("Expected parts field in rest api definition to contain an object");
-                                }
-                                restApi.addPathPart(part, PARAMETER_PARSER.parse(parser, null).isRequired());
-                            }
-                        }
+                                    if ("methods".equals(parser.currentName())) {
+                                        if (parser.nextToken() != XContentParser.Token.START_ARRAY) {
+                                            throw new IllegalArgumentException(
+                                                "Expected methods field in rest api definition to hold an array");
+                                        }
+                                        while (parser.nextToken() == XContentParser.Token.VALUE_STRING) {
+                                            String method = parser.text();
+                                            if (methods.add(method) == false) {
+                                                throw new IllegalArgumentException("Found duplicate method [" + method + "]");
+                                            }
+                                        }
+                                    }
 
-                        if (parser.currentToken() == XContentParser.Token.START_OBJECT && "params".equals(currentFieldName)) {
-                            while (parser.nextToken() == XContentParser.Token.FIELD_NAME) {
-                                String param = parser.currentName();
-                                parser.nextToken();
-                                if (parser.currentToken() != XContentParser.Token.START_OBJECT) {
-                                    throw new IllegalArgumentException("Expected params field in rest api definition to contain an object");
+                                    if (parser.currentToken() == XContentParser.Token.START_OBJECT
+                                        && "parts".equals(parser.currentName())) {
+                                        while (parser.nextToken() == XContentParser.Token.FIELD_NAME) {
+                                            String part = parser.currentName();
+                                            if (parser.nextToken() != XContentParser.Token.START_OBJECT) {
+                                                throw new IllegalArgumentException(
+                                                    "Expected parts field in rest api definition to contain an object");
+                                            }
+                                            parser.skipChildren();
+                                            if (pathParts.add(part) == false) {
+                                                throw new IllegalArgumentException("duplicated path part [" + part + "]");
+                                            }
+                                        }
+                                    }
+
+                                    if (parser.currentToken() == XContentParser.Token.START_OBJECT
+                                        && "deprecated".equals(parser.currentName())) {
+                                        parser.skipChildren();
+                                    }
                                 }
-                                restApi.addParam(param, PARAMETER_PARSER.parse(parser, null).isRequired());
+                                restApi.addPath(path, methods.toArray(new String[0]), pathParts);
+                            }
+                            if (restApi.getPaths().isEmpty()) {
+                                throw new IllegalArgumentException("At least one path should be listed under [paths]");
                             }
                         }
+                    }
+                }
+
+                if ("params".equals(parser.currentName())) {
+                    if (parser.nextToken() != XContentParser.Token.START_OBJECT) {
+                        throw new IllegalArgumentException("Expected params field in rest api definition to contain objects");
+
+                    }
+                    while (parser.nextToken() == XContentParser.Token.FIELD_NAME) {
+                        String param = parser.currentName();
+                        parser.nextToken();
+                        if (parser.currentToken() != XContentParser.Token.START_OBJECT) {
+                            throw new IllegalArgumentException("Expected params field in rest api definition to contain an object");
+                        }
+                        restApi.addParam(param, PARAMETER_PARSER.parse(parser, null).isRequired());
                     }
                 }
 
@@ -145,13 +166,6 @@ public class ClientYamlSuiteRestApiParser {
         parser.nextToken();
 
         return restApi;
-    }
-
-    private void addPathToApi(String path, ClientYamlSuiteRestApi restApi) {
-        if (restApi.getPaths().contains(path)) {
-            throw new IllegalArgumentException("Found duplicate path [" + path + "]");
-        }
-        restApi.addPath(path);
     }
 
     private static class Parameter {
