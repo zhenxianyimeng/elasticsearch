@@ -145,6 +145,12 @@ public class ElectMasterService extends AbstractComponent {
     }
 
     /** selects the best active master to join, where multiple are discovered */
+    /**
+     * 如果接收到的master节点有多个，那么选择nodeid最小的一个作为master
+     * 选择节点id最小的所有master节点中选择一个
+     * @param activeMasters
+     * @return
+     */
     public DiscoveryNode tieBreakActiveMasters(Collection<DiscoveryNode> activeMasters) {
         return activeMasters.stream().min(ElectMasterService::compareNodes).get();
     }

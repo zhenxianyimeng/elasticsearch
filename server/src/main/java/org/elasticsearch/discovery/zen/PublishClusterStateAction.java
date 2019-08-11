@@ -188,6 +188,16 @@ public class PublishClusterStateAction extends AbstractComponent {
             // try and serialize the cluster state once (or per version), so we don't serialize it
             // per node when we send it over the wire, compress it while we are at it...
             // we don't send full version if node didn't exist in the previous version of cluster state
+            /**
+             * 临近版本的diff来同步状态，目的为了省网络带宽，点进去ClusterState类可以发现里面的状态信息量还是不少，
+             * 不过diff 需要你的版本和目前的最新的版本只相差一个版本，如果你要从1跳到3需要发送full的状态。
+             * sendFullClusterState 和sendClusterStateDiff都会调用底层transportService来真正发送状态，
+             * 而状态记录通过一个sendingController来维护，
+             * 没接收到ack或者timeout都会让controller来check是否达到了minMasterNodes-1，
+             * 达到则标记这次的状态推送commited，其余情况都会抛错。
+             *
+             *
+             */
             if (sendFullVersion || !previousState.nodes().nodeExists(node)) {
                 sendFullClusterState(clusterState, serializedStates, node, publishTimeout, sendingController);
             } else {

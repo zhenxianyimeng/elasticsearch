@@ -267,14 +267,17 @@ public class UnicastZenPing extends AbstractComponent implements ZenPing {
     /**
      * a variant of {@link #ping(Consumer, TimeValue)}, but allows separating the scheduling duration
      * from the duration used for request level time outs. This is useful for testing
+     * ping 的具体逻辑
      */
     protected void ping(final Consumer<PingCollection> resultsConsumer,
                         final TimeValue scheduleDuration,
                         final TimeValue requestDuration) {
         final List<TransportAddress> seedAddresses = new ArrayList<>();
+        //从配置中获取集群信息
         seedAddresses.addAll(hostsProvider.buildDynamicHosts(createHostsResolver()));
         final DiscoveryNodes nodes = contextProvider.clusterState().nodes();
         // add all possible master nodes that were active in the last known cluster configuration
+        //最近的masternode
         for (ObjectCursor<DiscoveryNode> masterNode : nodes.getMasterNodes().values()) {
             seedAddresses.add(masterNode.value.getAddress());
         }

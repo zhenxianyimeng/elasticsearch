@@ -232,6 +232,11 @@ public class NodeJoinController extends AbstractComponent {
             this.callback = callback;
         }
 
+        /**
+         * 加入的节点放入joinRequestAccumulator中
+         * @param node
+         * @param callback
+         */
         public synchronized void addIncomingJoin(DiscoveryNode node, MembershipAction.JoinCallback callback) {
             ensureOpen();
             joinRequestAccumulator.computeIfAbsent(node, n -> new ArrayList<>()).add(callback);
