@@ -169,19 +169,24 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
                 executeIngestAndBulk(task, bulkRequest, startTime, listener, responses, indicesThatCannotBeCreated);
             } else {
                 final AtomicInteger counter = new AtomicInteger(autoCreateIndices.size());
+                //遍历所有需要创建的索引
                 for (String index : autoCreateIndices) {
+                    //发送创建索引的请求，需要等待master响应成功
                     createIndex(index, bulkRequest.timeout(), new ActionListener<CreateIndexResponse>() {
                         @Override
                         public void onResponse(CreateIndexResponse result) {
+                            //bulk计数器，每次减一，当计数器为0时，批量插入完成
                             if (counter.decrementAndGet() == 0) {
                                 executeIngestAndBulk(task, bulkRequest, startTime, listener, responses, indicesThatCannotBeCreated);
                             }
                         }
 
+                        //标记失败的索引
                         @Override
                         public void onFailure(Exception e) {
                             if (!(ExceptionsHelper.unwrapCause(e) instanceof ResourceAlreadyExistsException)) {
                                 // fail all requests involving this index, if create didn't work
+                                // 索引失败对应的请求设置为空
                                 for (int i = 0; i < bulkRequest.requests.size(); i++) {
                                     DocWriteRequest request = bulkRequest.requests.get(i);
                                     if (request != null && setResponseFailureIfIndexMatches(responses, i, request, index, e)) {
@@ -204,6 +209,15 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
         }
     }
 
+    /**
+     * 批量执行插入
+     * @param task
+     * @param bulkRequest
+     * @param startTimeNanos
+     * @param listener
+     * @param responses
+     * @param indicesThatCannotBeCreated
+     */
     private void executeIngestAndBulk(Task task, final BulkRequest bulkRequest, final long startTimeNanos,
         final ActionListener<BulkResponse> listener, final AtomicArray<BulkItemResponse> responses,
         Map<String, IndexNotFoundException> indicesThatCannotBeCreated) {
@@ -301,9 +315,14 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
             listener.onFailure(e);
         }
 
+        /**
+         * 索引创建完成之后，需要检查各种参数
+         * @throws Exception
+         */
         @Override
         protected void doRun() throws Exception {
             final ClusterState clusterState = observer.setAndGetObservedState();
+            //如果集群异常，等待集群选主等操作
             if (handleBlockExceptions(clusterState)) {
                 return;
             }
@@ -352,6 +371,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
             }
 
             // first, go over all the requests and create a ShardId -> Operations mapping
+            //合并请求，做一个分表id到请求列表的映射，合并后的request可以一个请求发到对应的shard
             Map<ShardId, List<BulkItemRequest>> requestsByShard = new HashMap<>();
             for (int i = 0; i < bulkRequest.requests.size(); i++) {
                 DocWriteRequest request = bulkRequest.requests.get(i);
@@ -360,6 +380,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
                 }
                 String concreteIndex = concreteIndices.getConcreteIndex(request.index()).getName();
                 ShardId shardId = clusterService.operationRouting().indexShards(clusterState, concreteIndex, request.id(), request.routing()).shardId();
+                //id->请求的关系写入map
                 List<BulkItemRequest> shardRequests = requestsByShard.computeIfAbsent(shardId, shard -> new ArrayList<>());
                 shardRequests.add(new BulkItemRequest(i, request));
             }
@@ -381,6 +402,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
                 if (task != null) {
                     bulkShardRequest.setParentTask(nodeId, task.getId());
                 }
+                //bulk请求转发到对应shard分片的流程
                 shardBulkAction.execute(bulkShardRequest, new ActionListener<BulkShardResponse>() {
                     @Override
                     public void onResponse(BulkShardResponse bulkShardResponse) {

@@ -50,6 +50,12 @@ class Netty4HttpRequestHandler extends SimpleChannelInboundHandler<Object> {
         this.threadContext = threadContext;
     }
 
+    /**
+     * elasticsearch 启动时，启动netty，监听http请求，并进行转发
+     * @param ctx
+     * @param msg
+     * @throws Exception
+     */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
         final FullHttpRequest request;
@@ -129,6 +135,7 @@ class Netty4HttpRequestHandler extends SimpleChannelInboundHandler<Object> {
                 channel = innerChannel;
             }
 
+            //转发http请求
             if (request.decoderResult().isFailure()) {
                 serverTransport.dispatchBadRequest(httpRequest, channel, request.decoderResult().cause());
             } else if (badRequestCause != null) {

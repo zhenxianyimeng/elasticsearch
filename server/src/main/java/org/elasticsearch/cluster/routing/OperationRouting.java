@@ -286,7 +286,7 @@ public class OperationRouting extends AbstractComponent {
         } else {
             effectiveRouting = routing;
         }
-
+        //设置routing_partition_size减少数据倾斜问题
         if (indexMetaData.isRoutingPartitionedIndex()) {
             partitionOffset = Math.floorMod(Murmur3HashFunction.hash(id), indexMetaData.getRoutingPartitionSize());
         } else {
@@ -297,6 +297,7 @@ public class OperationRouting extends AbstractComponent {
         return calculateScaledShardId(indexMetaData, effectiveRouting, partitionOffset);
     }
 
+    //计算路由shareId
     private static int calculateScaledShardId(IndexMetaData indexMetaData, String effectiveRouting, int partitionOffset) {
         final int hash = Murmur3HashFunction.hash(effectiveRouting) + partitionOffset;
 

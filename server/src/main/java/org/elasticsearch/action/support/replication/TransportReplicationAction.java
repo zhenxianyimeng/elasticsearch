@@ -703,6 +703,7 @@ public abstract class TransportReplicationAction<
             finishWithUnexpectedFailure(e);
         }
 
+        //分片请求入口
         @Override
         protected void doRun() {
             setPhase(task, "routing");
@@ -732,6 +733,7 @@ public abstract class TransportReplicationAction<
                 return;
             }
             final DiscoveryNode node = state.nodes().get(primary.currentNodeId());
+            //获取主分配所在节点，如果节点在本地，直接执行，否则需要转发
             if (primary.currentNodeId().equals(state.nodes().getLocalNodeId())) {
                 performLocalAction(state, primary, node, indexMetaData);
             } else {
@@ -739,6 +741,7 @@ public abstract class TransportReplicationAction<
             }
         }
 
+        //主分配在本地
         private void performLocalAction(ClusterState state, ShardRouting primary, DiscoveryNode node, IndexMetaData indexMetaData) {
             setPhase(task, "waiting_on_primary");
             if (logger.isTraceEnabled()) {
@@ -749,6 +752,7 @@ public abstract class TransportReplicationAction<
                 new ConcreteShardRequest<>(request, primary.allocationId().getId(), indexMetaData.primaryTerm(primary.id())));
         }
 
+        //主分配在其他节点
         private void performRemoteAction(ClusterState state, ShardRouting primary, DiscoveryNode node) {
             if (state.version() < request.routedBasedOnClusterVersion()) {
                 logger.trace("failed to find primary [{}] for request [{}] despite sender thinking it would be here. Local cluster state "

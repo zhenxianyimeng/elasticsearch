@@ -33,9 +33,9 @@ import java.io.IOException;
  * Allows for shard level components to be injected with the shard id.
  */
 public class ShardId implements Streamable, Comparable<ShardId>, ToXContentFragment {
-
+    //分片所属的索引
     private Index index;
-
+    //从0开始递增的序号
     private int shardId;
 
     private int hashCode;

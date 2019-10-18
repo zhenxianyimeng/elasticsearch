@@ -678,6 +678,7 @@ public class ZenDiscovery extends AbstractLifecycleComponent implements Discover
         }
     }
 
+    //节点掉了，调用
     private void handleNodeFailure(final DiscoveryNode node, final String reason) {
         if (lifecycleState() != Lifecycle.State.STARTED) {
             // not started, ignore a node failure

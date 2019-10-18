@@ -605,7 +605,7 @@ public class ActionModule extends AbstractModule {
         registerHandler.accept(new RestMultiTermVectorsAction(settings, restController));
         registerHandler.accept(new RestBulkAction(settings, restController));
         registerHandler.accept(new RestUpdateAction(settings, restController));
-
+        //注册对象实例，容器管理
         registerHandler.accept(new RestSearchAction(settings, restController));
         registerHandler.accept(new RestSearchScrollAction(settings, restController));
         registerHandler.accept(new RestClearScrollAction(settings, restController));
