@@ -56,6 +56,11 @@ public class RestSearchAction extends BaseRestHandler {
     public static final String TYPED_KEYS_PARAM = "typed_keys";
     private static final Set<String> RESPONSE_PARAMS = Collections.singleton(TYPED_KEYS_PARAM);
 
+    /**
+     * 将各种search注册到restcontroller中去
+     * @param settings
+     * @param controller
+     */
     public RestSearchAction(Settings settings, RestController controller) {
         super(settings);
         controller.registerHandler(GET, "/_search", this);

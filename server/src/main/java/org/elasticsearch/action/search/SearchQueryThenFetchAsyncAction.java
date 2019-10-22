@@ -32,6 +32,14 @@ import java.util.Set;
 import java.util.concurrent.Executor;
 import java.util.function.BiFunction;
 
+/**
+ * 各种 search action
+ * 完成三个步骤
+ * 1.query
+ * 2.fetch
+ * 3.merge
+ */
+
 final class SearchQueryThenFetchAsyncAction extends AbstractSearchAsyncAction<SearchPhaseResult> {
 
     private final SearchPhaseController searchPhaseController;
@@ -49,6 +57,13 @@ final class SearchQueryThenFetchAsyncAction extends AbstractSearchAsyncAction<Se
         this.searchPhaseController = searchPhaseController;
     }
 
+    /**
+     * 第一步从每个节点获取结果
+     * @param shardIt the shards iterator
+     * @param shard the shard routing to send the request for
+     * @param listener the listener to notify on response
+     */
+    @Override
     protected void executePhaseOnShard(final SearchShardIterator shardIt, final ShardRouting shard,
                                        final SearchActionListener<SearchPhaseResult> listener) {
         getSearchTransport().sendExecuteQuery(getConnection(shardIt.getClusterAlias(), shard.currentNodeId()),

@@ -149,6 +149,7 @@ public class SearchTransportService extends AbstractComponent {
         Supplier<SearchPhaseResult> supplier = fetchDocuments ? QueryFetchSearchResult::new : QuerySearchResult::new;
 
         final ActionListener handler = responseWrapper.apply(connection, listener);
+        //
         transportService.sendChildRequest(connection, QUERY_ACTION_NAME, request, task,
                 new ConnectionCountingHandler<>(handler, supplier, clientConnections, connection.getNode().getId()));
     }
@@ -305,6 +306,7 @@ public class SearchTransportService extends AbstractComponent {
         }
     }
 
+    //注册和搜索相关的操作 rpc调用，TransportRequestHandler接受后，调用的handler在此注册
     public static void registerRequestHandler(TransportService transportService, SearchService searchService) {
         transportService.registerRequestHandler(FREE_CONTEXT_SCROLL_ACTION_NAME, ScrollFreeContextRequest::new, ThreadPool.Names.SAME,
             new TaskAwareTransportRequestHandler<ScrollFreeContextRequest>() {

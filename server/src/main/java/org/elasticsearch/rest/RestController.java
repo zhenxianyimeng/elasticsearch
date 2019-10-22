@@ -163,6 +163,7 @@ public class RestController extends AbstractComponent implements HttpServerTrans
         return handler.map(h -> h.canTripCircuitBreaker()).orElse(true);
     }
 
+    //RestController 转发给各种Action
     @Override
     public void dispatchRequest(RestRequest request, RestChannel channel, ThreadContext threadContext) {
         if (request.rawPath().equals("/favicon.ico")) {

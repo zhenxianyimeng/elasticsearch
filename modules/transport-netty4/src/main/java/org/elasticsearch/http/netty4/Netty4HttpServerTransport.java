@@ -121,6 +121,10 @@ import static org.elasticsearch.http.HttpTransportSettings.SETTING_PIPELINING;
 import static org.elasticsearch.http.HttpTransportSettings.SETTING_PIPELINING_MAX_EVENTS;
 import static org.elasticsearch.http.netty4.cors.Netty4CorsHandler.ANY_ORIGIN;
 
+/**
+ * netty->netty4之后 NettyHttpServerTransport  -> Netty4HttpServerTransport
+ * 负责监听http请求，主要用于客户端请求es集群
+ */
 public class Netty4HttpServerTransport extends AbstractLifecycleComponent implements HttpServerTransport {
 
     static {
@@ -621,6 +625,7 @@ public class Netty4HttpServerTransport extends AbstractLifecycleComponent implem
             if (transport.pipelining) {
                 ch.pipeline().addLast("pipelining", new HttpPipeliningHandler(transport.logger, transport.pipeliningMaxEvents));
             }
+            //init 的时候 添加requestHandler,处理http请求
             ch.pipeline().addLast("handler", requestHandler);
         }
 

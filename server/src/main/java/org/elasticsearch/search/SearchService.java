@@ -450,6 +450,17 @@ public class SearchService extends AbstractLifecycleComponent implements IndexEv
         }, listener);
     }
 
+    /**
+     * （1） 创建search context
+     * （2） 预处理query
+     * （3） 加载缓存或者查询lucene
+     * （4） 如果search_type是count，则释放search context
+     * （5） 记录慢query日志
+     *
+     * @param request
+     * @param task
+     * @param listener
+     */
     public void executeQueryPhase(QuerySearchRequest request, SearchTask task, ActionListener<QuerySearchResult> listener) {
         runAsync(request.id(), () -> {
             final SearchContext context = findContext(request.id(), request);

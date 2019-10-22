@@ -75,6 +75,8 @@ import static org.elasticsearch.common.util.concurrent.EsExecutors.daemonThreadF
  * batch) with high payload that will cause regular request. (like search or single index) to take
  * longer. Med is for the typical search / single doc index. And High for things like cluster state. Ping is reserved for
  * sending out ping requests to other nodes.
+ *
+ * 提供es集群内部的rpc协议支持
  */
 public class Netty4Transport extends TcpTransport {
 
@@ -167,6 +169,7 @@ public class Netty4Transport extends TcpTransport {
         return bootstrap;
     }
 
+    //启动 netty服务，绑定childHandler
     private void createServerBootstrap(ProfileSettings profileSettings) {
         String name = profileSettings.profileName;
         if (logger.isDebugEnabled()) {

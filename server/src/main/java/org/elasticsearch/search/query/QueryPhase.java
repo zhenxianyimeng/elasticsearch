@@ -89,6 +89,11 @@ public class QueryPhase implements SearchPhase {
         context.preProcess(true);
     }
 
+    /**
+     * 执行luence操作
+     * @param searchContext
+     * @throws QueryPhaseExecutionException
+     */
     @Override
     public void execute(SearchContext searchContext) throws QueryPhaseExecutionException {
         if (searchContext.hasOnlySuggest()) {

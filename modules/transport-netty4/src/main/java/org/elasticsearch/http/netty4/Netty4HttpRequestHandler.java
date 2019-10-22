@@ -55,6 +55,7 @@ class Netty4HttpRequestHandler extends SimpleChannelInboundHandler<Object> {
      * @param ctx
      * @param msg
      * @throws Exception
+     * 有netty原来的messageReceived转变过来
      */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -135,7 +136,7 @@ class Netty4HttpRequestHandler extends SimpleChannelInboundHandler<Object> {
                 channel = innerChannel;
             }
 
-            //转发http请求
+            //转发http请求，通过serverTransport 将http请求转发到其他节点
             if (request.decoderResult().isFailure()) {
                 serverTransport.dispatchBadRequest(httpRequest, channel, request.decoderResult().cause());
             } else if (badRequestCause != null) {

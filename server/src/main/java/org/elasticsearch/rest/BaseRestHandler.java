@@ -74,6 +74,13 @@ public abstract class BaseRestHandler extends AbstractComponent implements RestH
      */
     public abstract String getName();
 
+    /**
+     * 处理逻辑
+     * @param request The request to handle
+     * @param channel The channel to write the request response to
+     * @param client A client to use to make internal requests on behalf of the original request
+     * @throws Exception
+     */
     @Override
     public final void handleRequest(RestRequest request, RestChannel channel, NodeClient client) throws Exception {
         // prepare the request for execution; has the side effect of touching the request parameters
