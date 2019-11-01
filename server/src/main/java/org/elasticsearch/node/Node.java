@@ -184,7 +184,7 @@ import static java.util.stream.Collectors.toList;
 
 /**
  * A node represent a node within a cluster ({@code cluster.name}). The {@link #client()} can be used
- * in order to use a {@link Client} to perform actions/operations against the cluster.
+ * in order to use a {@link Client} to perform actionpluginsService.getExecutorBuilderss/operations against the cluster.
  */
 public abstract class Node implements Closeable {
 

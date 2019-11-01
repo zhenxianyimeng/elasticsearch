@@ -125,6 +125,7 @@ public class ReplicationOperation<
         }
 
         successfulShards.incrementAndGet();  // mark primary as successful
+        //等待所有分片的返回
         decPendingAndFinishIfNeeded();
     }
 
@@ -163,6 +164,7 @@ public class ReplicationOperation<
 
         totalShards.incrementAndGet();
         pendingActions.incrementAndGet();
+        //监听，成功或者失败的回调
         replicasProxy.performOn(shard, replicaRequest, globalCheckpoint, maxSeqNoOfUpdatesOrDeletes, new ActionListener<ReplicaResponse>() {
             @Override
             public void onResponse(ReplicaResponse response) {
