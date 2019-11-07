@@ -1488,6 +1488,7 @@ public class IndexShard extends AbstractIndexShardComponent implements IndicesCl
     /**
      * perform the last stages of recovery once all translog operations are done.
      * note that you should still call {@link #postRecovery(String)}.
+     * 数据写入文件，操作系统的cache，但不刷盘
      */
     public void finalizeRecovery() {
         recoveryState().setStage(RecoveryState.Stage.FINALIZE);
@@ -2105,6 +2106,15 @@ public class IndexShard extends AbstractIndexShardComponent implements IndicesCl
         return this.currentEngineReference.get();
     }
 
+    /**
+     * 开始数据恢复
+     * @param recoveryState
+     * @param recoveryTargetService
+     * @param recoveryListener
+     * @param repositoriesService
+     * @param mappingUpdateConsumer
+     * @param indicesService
+     */
     public void startRecovery(RecoveryState recoveryState, PeerRecoveryTargetService recoveryTargetService,
                               PeerRecoveryTargetService.RecoveryListener recoveryListener, RepositoriesService repositoriesService,
                               BiConsumer<String, MappingMetaData> mappingUpdateConsumer,
@@ -2126,16 +2136,20 @@ public class IndexShard extends AbstractIndexShardComponent implements IndicesCl
         //     }}
         // }
         assert recoveryState.getRecoverySource().equals(shardRouting.recoverySource());
+        //不同的恢复源头
         switch (recoveryState.getRecoverySource().getType()) {
             case EMPTY_STORE:
             case EXISTING_STORE:
                 markAsRecovering("from store", recoveryState); // mark the shard as recovering on the cluster state thread
+                //启动恢复的线程
                 threadPool.generic().execute(() -> {
                     try {
                         if (recoverFromStore()) {
+                            //发送恢复成功的请求
                             recoveryListener.onRecoveryDone(recoveryState);
                         }
                     } catch (Exception e) {
+                        //发送恢复失败请求
                         recoveryListener.onRecoveryFailure(recoveryState, new RecoveryFailedException(recoveryState, null, e), true);
                     }
                 });

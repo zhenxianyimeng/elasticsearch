@@ -704,6 +704,7 @@ public class TransportService extends AbstractLifecycleComponent implements Tran
         try {
             onRequestSent(localNode, requestId, action, request, options);
             onRequestReceived(requestId, action);
+            //local request不发送tcp，直接获取action对应的handlerRegister
             final RequestHandlerRegistry reg = getRequestHandler(action);
             if (reg == null) {
                 throw new ActionNotFoundTransportException("Action [" + action + "] not found");

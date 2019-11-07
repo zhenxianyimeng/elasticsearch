@@ -69,6 +69,7 @@ import java.util.function.Supplier;
 /**
  * An encapsulation of {@link org.elasticsearch.search.SearchService} operations exposed through
  * transport.
+ * 数据节点tcp服务，各种acton的注册，数据节点的入口函数
  */
 public class SearchTransportService extends AbstractComponent {
 

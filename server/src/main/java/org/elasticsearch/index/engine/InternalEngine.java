@@ -612,6 +612,7 @@ public class InternalEngine extends Engine {
         try (ReleasableLock ignored = readLock.acquire()) {
             ensureOpen();
             SearcherScope scope;
+            //早期版本通过translog读取实时数据，当前版本是通过realtime参数，然后通过reflush机制，只从luence读取
             if (get.realtime()) {
                 VersionValue versionValue = null;
                 try (Releasable ignore = versionMap.acquireLock(get.uid().bytes())) {
@@ -626,6 +627,7 @@ public class InternalEngine extends Engine {
                         throw new VersionConflictEngineException(shardId, get.type(), get.id(),
                             get.versionType().explainConflictForReads(versionValue.version, get.version()));
                     }
+                    //执行刷盘
                     if (get.isReadFromTranslog()) {
                         // this is only used for updates - API _GET calls will always read form a reader for consistency
                         // the update call doesn't need the consistency since it's source only + _parent but parent can go away in 7.0
@@ -654,7 +656,7 @@ public class InternalEngine extends Engine {
                 // we expose what has been externally expose in a point in time snapshot via an explicit refresh
                 scope = SearcherScope.EXTERNAL;
             }
-
+            //刷盘成功以后，利用Searcher读取数据
             // no version, get the version from the index, we know that we refresh on flush
             return getFromSearcher(get, searcherFactory, scope);
         }

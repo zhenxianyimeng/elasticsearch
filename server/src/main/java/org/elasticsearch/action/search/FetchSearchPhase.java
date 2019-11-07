@@ -97,9 +97,12 @@ final class FetchSearchPhase extends SearchPhase {
         final int numShards = context.getNumShards();
         final boolean isScrollSearch = context.getRequest().scroll() != null;
         List<SearchPhaseResult> phaseResults = queryResults.asList();
+        //游标
         String scrollId = isScrollSearch ? TransportSearchHelper.buildScrollId(queryResults) : null;
         final SearchPhaseController.ReducedQueryPhase reducedQueryPhase = resultConsumer.reduce();
         final boolean queryAndFetchOptimization = queryResults.length() == 1;
+
+        //fetch收集结束后的执行方法，当所有fetch返回结果后，执行moveToNextPhase  到ExpandSearchPhase
         final Runnable finishPhase = ()
             -> moveToNextPhase(searchPhaseController, scrollId, reducedQueryPhase, queryAndFetchOptimization ?
             queryResults : fetchResults);
@@ -119,6 +122,7 @@ final class FetchSearchPhase extends SearchPhase {
                 final ScoreDoc[] lastEmittedDocPerShard = isScrollSearch ?
                     searchPhaseController.getLastEmittedDocPerShard(reducedQueryPhase, numShards)
                     : null;
+                //定义收集器，手机fetch的结果
                 final CountedCollector<FetchSearchResult> counter = new CountedCollector<>(r -> fetchResults.set(r.getShardIndex(), r),
                     docIdsToLoad.length, // we count down every shard in the result no matter if we got any results or not
                     finishPhase, context);
@@ -205,6 +209,7 @@ final class FetchSearchPhase extends SearchPhase {
         context.executeNextPhase(this, nextPhaseFactory.apply(internalResponse, scrollId));
     }
 
+    //ExpandSearchPhase执行完之后，执行该sendResponsePhase方法
     private static SearchPhase sendResponsePhase(InternalSearchResponse response, String scrollId, SearchPhaseContext context) {
         return new SearchPhase("response") {
             @Override

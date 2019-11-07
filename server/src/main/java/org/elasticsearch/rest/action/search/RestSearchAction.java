@@ -92,6 +92,7 @@ public class RestSearchAction extends BaseRestHandler {
          * company.
          */
         IntConsumer setSize = size -> searchRequest.source().size(size);
+        //解析request 构造searchRequest
         request.withContentOrSourceParamParserOrNull(parser ->
             parseSearchRequest(searchRequest, request, parser, setSize));
 

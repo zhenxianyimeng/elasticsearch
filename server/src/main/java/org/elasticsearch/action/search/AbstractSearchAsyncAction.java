@@ -150,6 +150,7 @@ abstract class AbstractSearchAsyncAction<Result extends SearchPhaseResult> exten
                     logger.trace("[{}] Moving to next phase: [{}], based on results from: {} (cluster state version: {})",
                         currentPhase.getName(), nextPhase.getName(), resultsFrom, clusterStateVersion);
                 }
+                //进入fetch阶段的入口
                 executePhase(nextPhase);
             }
         }
@@ -157,6 +158,7 @@ abstract class AbstractSearchAsyncAction<Result extends SearchPhaseResult> exten
 
     private void executePhase(SearchPhase phase) {
         try {
+            //Fetch阶段的类在  FetchSearchPhase类
             phase.run();
         } catch (Exception e) {
             if (logger.isDebugEnabled()) {

@@ -122,6 +122,10 @@ abstract class InitialSearchPhase<FirstResult extends SearchPhaseResult> extends
         }
     }
 
+    /**
+     * 基于shard遍历请求，N个shard位于同一个节点，则发起n个请求，不合并
+     * @throws IOException
+     */
     @Override
     public final void run() throws IOException {
         for (final SearchShardIterator iterator : toSkipShardsIts) {
@@ -155,6 +159,7 @@ abstract class InitialSearchPhase<FirstResult extends SearchPhaseResult> extends
             for (int index = 0; index < maxConcurrentShardRequests; index++) {
                 final SearchShardIterator shardRoutings = shardsIts.get(index);
                 assert shardRoutings.skip() == false;
+                //具体到某个分片执行请求。shardRoutings.nextOrNull()获取其中一个分片
                 performPhaseOnShard(index, shardRoutings, shardRoutings.nextOrNull());
             }
         }
@@ -210,6 +215,7 @@ abstract class InitialSearchPhase<FirstResult extends SearchPhaseResult> extends
             fork(() -> onShardFailure(shardIndex, null, null, shardIt, new NoShardAvailableActionException(shardIt.shardId())));
         } else {
             try {
+                //调用SearchQueryThenFetchAsyncAction 发送请求
                 executePhaseOnShard(shardIt, shard, new SearchActionListener<FirstResult>(new SearchShardTarget(shard.currentNodeId(),
                     shardIt.shardId(), shardIt.getClusterAlias(), shardIt.getOriginalIndices()), shardIndex) {
                     @Override
@@ -232,6 +238,7 @@ abstract class InitialSearchPhase<FirstResult extends SearchPhaseResult> extends
         }
     }
 
+    //手机返回的请求
     private void onShardResult(FirstResult result, SearchShardIterator shardIt) {
         assert result.getShardIndex() != -1 : "shard index is not set";
         assert result.getSearchShardTarget() != null : "search shard target must not be null";
@@ -253,6 +260,7 @@ abstract class InitialSearchPhase<FirstResult extends SearchPhaseResult> extends
         }
         final int xTotalOps = totalOps.addAndGet(remainingOpsOnIterator);
         if (xTotalOps == expectedTotalOps) {
+            //成功收集到所有分片的response
             onPhaseDone();
         } else if (xTotalOps > expectedTotalOps) {
             throw new AssertionError("unexpected higher total ops [" + xTotalOps + "] compared to expected ["

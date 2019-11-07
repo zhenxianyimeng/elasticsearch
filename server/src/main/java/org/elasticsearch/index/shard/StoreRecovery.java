@@ -352,6 +352,7 @@ final class StoreRecovery {
     private void internalRecoverFromStore(IndexShard indexShard) throws IndexShardRecoveryException {
         final RecoveryState recoveryState = indexShard.recoveryState();
         final boolean indexShouldExists = recoveryState.getRecoverySource().getType() != RecoverySource.Type.EMPTY_STORE;
+        //校验工作，设置stage 进入INDEX阶段
         indexShard.prepareForIndexRecovery();
         long version = -1;
         SegmentInfos si = null;
@@ -424,8 +425,8 @@ final class StoreRecovery {
             }
             indexShard.openEngineAndRecoverFromTranslog();
             indexShard.getEngine().fillSeqNoGaps(indexShard.getPendingPrimaryTerm());
-            indexShard.finalizeRecovery();
-            indexShard.postRecovery("post recovery from shard_store");
+            indexShard.finalizeRecovery();//reflush cache
+            indexShard.postRecovery("post recovery from shard_store"); //fluash 真正的flush到磁盘
         } catch (EngineException | IOException e) {
             throw new IndexShardRecoveryException(shardId, "failed to recover from gateway", e);
         } finally {

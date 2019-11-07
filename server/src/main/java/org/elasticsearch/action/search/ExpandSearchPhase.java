@@ -64,6 +64,10 @@ final class ExpandSearchPhase extends SearchPhase {
             searchRequest.source().collapse().getInnerHits().isEmpty() == false;
     }
 
+    /**
+     * 主要判断是否启用字段折叠，根据需要实现字段折叠
+     * @throws IOException
+     */
     @Override
     public void run() throws IOException {
         if (isCollapseRequest() && searchResponse.hits().getHits().length > 0) {

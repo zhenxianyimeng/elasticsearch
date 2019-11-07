@@ -45,6 +45,7 @@ import java.util.Map;
 
 /**
  * Keeps track of state related to shard recovery.
+ * 恢复过程的状态
  */
 public class RecoveryState implements ToXContentFragment, Streamable {
 

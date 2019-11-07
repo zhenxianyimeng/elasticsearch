@@ -46,6 +46,7 @@ import java.util.Set;
 /**
  * The source recovery accepts recovery requests from other peer shards and start the recovery process from this
  * source shard to the target shard.
+ * 主分配恢复
  */
 public class PeerRecoverySourceService extends AbstractComponent implements IndexEventListener {
 

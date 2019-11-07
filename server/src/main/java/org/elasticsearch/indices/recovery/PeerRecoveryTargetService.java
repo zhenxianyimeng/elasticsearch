@@ -76,6 +76,7 @@ import static org.elasticsearch.common.unit.TimeValue.timeValueMillis;
  * <p>
  * Note, it can be safely assumed that there will only be a single recovery per shard (index+id) and
  * not several of them (since we don't allocate several shard replicas to the same node).
+ * 副本分片恢复
  */
 public class PeerRecoveryTargetService extends AbstractComponent implements IndexEventListener {
 
@@ -108,6 +109,7 @@ public class PeerRecoveryTargetService extends AbstractComponent implements Inde
         this.clusterService = clusterService;
         this.onGoingRecoveries = new RecoveriesCollection(logger, threadPool, this::waitForClusterState);
 
+        //注册副本恢复过程中的一些方法
         transportService.registerRequestHandler(Actions.FILES_INFO, RecoveryFilesInfoRequest::new, ThreadPool.Names.GENERIC, new
                 FilesInfoRequestHandler());
         transportService.registerRequestHandler(Actions.FILE_CHUNK, RecoveryFileChunkRequest::new, ThreadPool.Names.GENERIC, new

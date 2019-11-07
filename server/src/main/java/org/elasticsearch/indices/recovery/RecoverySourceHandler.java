@@ -284,6 +284,7 @@ public class RecoverySourceHandler {
      * Phase1 examines the segment files on the target node and copies over the
      * segments that are missing. Only segments that have the same size and
      * checksum can be reused
+     * 检测段文件，进行对比
      */
     public void phase1(final IndexCommit snapshot, final Supplier<Integer> translogOps) {
         cancellableThreads.checkForCancel();
@@ -455,6 +456,7 @@ public class RecoverySourceHandler {
      * @param maxSeenAutoIdTimestamp     the max auto_id_timestamp of append-only requests on the primary
      * @param maxSeqNoOfUpdatesOrDeletes the max seq_no of updates or deletes on the primary after these operations were executed on it.
      * @return the local checkpoint on the target
+     * 将translog批量发送到副分片节点
      */
     long phase2(final long startingSeqNo, long requiredSeqNoRangeStart, long endingSeqNo, final Translog.Snapshot snapshot,
                 final long maxSeenAutoIdTimestamp, final long maxSeqNoOfUpdatesOrDeletes)
