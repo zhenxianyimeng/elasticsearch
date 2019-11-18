@@ -42,6 +42,7 @@ import org.elasticsearch.common.settings.Settings;
  * {@code host}. Allocations of multiple copies of the same shard on the same
  * {@code node} are not allowed independently of this setting.
  * </p>
+ * 避免同一个分片分配到一个集群
  */
 public class SameShardAllocationDecider extends AllocationDecider {
 

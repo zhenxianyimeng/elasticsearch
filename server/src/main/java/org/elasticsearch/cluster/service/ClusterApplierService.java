@@ -65,6 +65,9 @@ import java.util.stream.Stream;
 import static org.elasticsearch.cluster.service.ClusterService.CLUSTER_SERVICE_SLOW_TASK_LOGGING_THRESHOLD_SETTING;
 import static org.elasticsearch.common.util.concurrent.EsExecutors.daemonThreadFactory;
 
+/**
+ * 负责需要处理集群任务的模块，通知其他Applier处理集群状态，提供接口给外部调用
+ */
 public class ClusterApplierService extends AbstractLifecycleComponent implements ClusterApplier {
 
     public static final String CLUSTER_UPDATE_THREAD_NAME = "clusterApplierService#updateTask";
@@ -82,6 +85,7 @@ public class ClusterApplierService extends AbstractLifecycleComponent implements
     private final Collection<ClusterStateApplier> highPriorityStateAppliers = new CopyOnWriteArrayList<>();
     private final Collection<ClusterStateApplier> normalPriorityStateAppliers = new CopyOnWriteArrayList<>();
     private final Collection<ClusterStateApplier> lowPriorityStateAppliers = new CopyOnWriteArrayList<>();
+    //需要通知的集群状态应用处理器
     private final Iterable<ClusterStateApplier> clusterStateAppliers = Iterables.concat(highPriorityStateAppliers,
         normalPriorityStateAppliers, lowPriorityStateAppliers);
 
@@ -209,6 +213,8 @@ public class ClusterApplierService extends AbstractLifecycleComponent implements
 
     /**
      * Adds a applier of updated cluster states.
+     * 模块需要应用集群状态，则添加applier
+     * 处理在变化状态可见之前
      */
     public void addStateApplier(ClusterStateApplier applier) {
         normalPriorityStateAppliers.add(applier);
@@ -225,6 +231,8 @@ public class ClusterApplierService extends AbstractLifecycleComponent implements
 
     /**
      * Add a listener for updated cluster states
+     * 添加监听器
+     * 监听在变化状态可见之后
      */
     public void addListener(ClusterStateListener listener) {
         clusterStateListeners.add(listener);
@@ -437,6 +445,12 @@ public class ClusterApplierService extends AbstractLifecycleComponent implements
         }
     }
 
+    /**
+     * 收到新的集群状态->通知全部applie
+     * @param task
+     * @param previousClusterState
+     * @param newClusterState
+     */
     private void applyChanges(UpdateTask task, ClusterState previousClusterState, ClusterState newClusterState) {
         ClusterChangedEvent clusterChangedEvent = new ClusterChangedEvent(task.source, newClusterState, previousClusterState);
         // new cluster state, notify all listeners

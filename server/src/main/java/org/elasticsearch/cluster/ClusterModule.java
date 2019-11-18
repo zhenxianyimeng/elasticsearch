@@ -218,6 +218,13 @@ public class ClusterModule extends AbstractModule {
 
     // TODO: this is public so allocation benchmark can access the default deciders...can we do that in another way?
     /** Return a new {@link AllocationDecider} instance with builtin deciders as well as those from plugins. */
+    /**
+     * 添加各种decider
+     * @param settings
+     * @param clusterSettings
+     * @param clusterPlugins
+     * @return
+     */
     public static Collection<AllocationDecider> createAllocationDeciders(Settings settings, ClusterSettings clusterSettings,
                                                                          List<ClusterPlugin> clusterPlugins) {
         // collect deciders by class so that we can detect duplicates

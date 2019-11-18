@@ -112,6 +112,10 @@ public class GatewayMetaState extends AbstractComponent implements ClusterStateA
         return metaStateService.loadFullState();
     }
 
+    /**
+     * 接受集群信息的变化，并持久化到磁盘
+     * @param event
+     */
     @Override
     public void applyClusterState(ClusterChangedEvent event) {
 
@@ -128,6 +132,7 @@ public class GatewayMetaState extends AbstractComponent implements ClusterStateA
         Set<Index> relevantIndices = Collections.emptySet();
         boolean success = true;
         // write the state if this node is a master eligible node or if it is a data node and has shards allocated on it
+        // 只有具备Master资格的节点和数据节点才会持久化
         if (state.nodes().getLocalNode().isMasterNode() || state.nodes().getLocalNode().isDataNode()) {
             if (previousMetaData == null) {
                 try {
@@ -170,6 +175,7 @@ public class GatewayMetaState extends AbstractComponent implements ClusterStateA
             // check and write changes in indices
             for (IndexMetaWriteInfo indexMetaWrite : writeInfo) {
                 try {
+                    //持久化到磁盘
                     metaStateService.writeIndex(indexMetaWrite.reason, indexMetaWrite.newMetaData);
                 } catch (Exception e) {
                     success = false;

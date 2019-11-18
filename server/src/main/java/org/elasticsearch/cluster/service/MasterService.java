@@ -66,6 +66,9 @@ import java.util.stream.Collectors;
 import static org.elasticsearch.cluster.service.ClusterService.CLUSTER_SERVICE_SLOW_TASK_LOGGING_THRESHOLD_SETTING;
 import static org.elasticsearch.common.util.concurrent.EsExecutors.daemonThreadFactory;
 
+/**
+ * 主节点集群任务管理
+ */
 public class MasterService extends AbstractLifecycleComponent {
 
     public static final String MASTER_UPDATE_THREAD_NAME = "masterService#updateTask";

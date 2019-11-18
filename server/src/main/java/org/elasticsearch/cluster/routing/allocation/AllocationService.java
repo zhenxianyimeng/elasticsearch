@@ -61,6 +61,8 @@ import static org.elasticsearch.cluster.routing.UnassignedInfo.INDEX_DELAYED_NOD
  * {@link AllocationService} keeps {@link AllocationDeciders} to choose nodes
  * for shard allocation. This class also manages new nodes joining the cluster
  * and rerouting of shards.
+ *
+ * allocator复杂找到节点，交给decider决定是否执行
  */
 public class AllocationService extends AbstractComponent {
 
@@ -406,9 +408,10 @@ public class AllocationService extends AbstractComponent {
         // now allocate all the unassigned to available nodes
         if (allocation.routingNodes().unassigned().size() > 0) {
             removeDelayMarkers(allocation);
+            //gateway 分配器，用于分配实现已存在的分片，从磁盘中找到他们
             gatewayAllocator.allocateUnassigned(allocation);
         }
-
+        //分片均衡 分配器
         shardsAllocator.allocate(allocation);
         assert RoutingNodes.assertShardStats(allocation.routingNodes());
     }

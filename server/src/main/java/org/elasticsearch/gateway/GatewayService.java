@@ -139,6 +139,10 @@ public class GatewayService extends AbstractLifecycleComponent implements Cluste
     protected void doClose() {
     }
 
+    /**
+     * 监听集群动态，变化后执行
+     * @param event
+     */
     @Override
     public void clusterChanged(final ClusterChangedEvent event) {
         if (lifecycle.stoppedOrClosed()) {
