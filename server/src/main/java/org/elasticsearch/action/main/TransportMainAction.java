@@ -34,6 +34,9 @@ import org.elasticsearch.rest.RestStatus;
 import org.elasticsearch.threadpool.ThreadPool;
 import org.elasticsearch.transport.TransportService;
 
+/**
+ * Action的具体执行类
+ */
 public class TransportMainAction extends HandledTransportAction<MainRequest, MainResponse> {
 
     private final ClusterService clusterService;
@@ -46,6 +49,11 @@ public class TransportMainAction extends HandledTransportAction<MainRequest, Mai
         this.clusterService = clusterService;
     }
 
+    /**
+     * action对应的具体操作
+     * @param request
+     * @param listener
+     */
     @Override
     protected void doExecute(MainRequest request, ActionListener<MainResponse> listener) {
         ClusterState clusterState = clusterService.state();

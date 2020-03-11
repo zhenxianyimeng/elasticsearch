@@ -81,6 +81,9 @@ import static org.elasticsearch.common.settings.Setting.timeSetting;
 
 public class TransportService extends AbstractLifecycleComponent implements TransportMessageListener, TransportConnectionListener {
 
+    /**
+     * 一个13个连接，各种连接初始化和作用
+     */
     public static final Setting<Integer> CONNECTIONS_PER_NODE_RECOVERY =
         intSetting("transport.connections_per_node.recovery", 2, 1, Setting.Property.NodeScope);
     public static final Setting<Integer> CONNECTIONS_PER_NODE_BULK =
@@ -572,6 +575,7 @@ public class TransportService extends AbstractLifecycleComponent implements Tran
                                                                 final TransportRequestOptions options,
                                                                 TransportResponseHandler<T> handler) {
         try {
+            //发送数据，最终调用 TcpTransport.NodeChannels#sendRequest
             asyncSender.sendRequest(connection, action, request, options, handler);
         } catch (NodeNotConnectedException ex) {
             // the caller might not handle this so we invoke the handler

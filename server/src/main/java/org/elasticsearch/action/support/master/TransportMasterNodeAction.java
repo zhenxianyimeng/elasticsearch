@@ -52,6 +52,7 @@ import java.util.function.Supplier;
 
 /**
  * A base class for operations that needs to be performed on the master node.
+ * 保证操作在master上执行
  */
 public abstract class TransportMasterNodeAction<Request extends MasterNodeRequest<Request>, Response extends ActionResponse>
     extends HandledTransportAction<Request, Response> {

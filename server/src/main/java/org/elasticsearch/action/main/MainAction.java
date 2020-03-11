@@ -24,6 +24,9 @@ import org.elasticsearch.client.ElasticsearchClient;
 
 public class MainAction extends Action<MainRequest, MainResponse, MainRequestBuilder> {
 
+    /**
+     * 根据名字查找对应的Action
+     */
     public static final String NAME = "cluster:monitor/main";
     public static final MainAction INSTANCE = new MainAction();
 

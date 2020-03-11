@@ -48,11 +48,11 @@ public class TransportRequestOptions {
     public static final TransportRequestOptions EMPTY = new TransportRequestOptions.Builder().build();
 
     public enum Type {
-        RECOVERY,
-        BULK,
-        REG,
-        STATE,
-        PING
+        RECOVERY,//用于恢复
+        BULK,//用于批量写入
+        REG,//用于其他用途，加入集群等
+        STATE,//传输集群状态
+        PING//用于nodeFD或者masterFD的ping请求
     }
 
     public static Builder builder() {

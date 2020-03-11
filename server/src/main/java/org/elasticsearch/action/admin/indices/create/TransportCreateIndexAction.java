@@ -77,7 +77,7 @@ public class TransportCreateIndexAction extends TransportMasterNodeAction<Create
                 .settings(request.settings()).mappings(request.mappings())
                 .aliases(request.aliases())
                 .waitForActiveShards(request.waitForActiveShards());
-
+        //创建索引
         createIndexService.createIndex(updateRequest, ActionListener.wrap(response ->
             listener.onResponse(new CreateIndexResponse(response.isAcknowledged(), response.isShardsAcknowledged(), indexName)),
             listener::onFailure));

@@ -122,7 +122,7 @@ class Elasticsearch extends EnvironmentAwareCommand {
         } catch (IOException e) {
             throw new UserException(ExitCodes.CONFIG, e.getMessage());
         }
-
+        //启动es
         try {
             init(daemonize, pidFile, quiet, env);
         } catch (NodeValidationException e) {

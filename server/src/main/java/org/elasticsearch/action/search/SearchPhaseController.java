@@ -253,6 +253,7 @@ public final class SearchPhaseController extends AbstractComponent {
             mergedTopDocs = TopDocs.merge(sort, from, topN, shardTopDocs, setShardIndex);
         } else {
             final TopDocs[] shardTopDocs = results.toArray(new TopDocs[numShards]);
+            //合并多个top docs shard[0] shard[1]的顺序
             mergedTopDocs = TopDocs.merge(from, topN, shardTopDocs, setShardIndex);
         }
         return mergedTopDocs;

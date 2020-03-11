@@ -266,6 +266,7 @@ final class Bootstrap {
     }
 
     private void start() throws NodeValidationException {
+        // node表示一个节点
         node.start();
         keepAliveThread.start();
     }
@@ -282,7 +283,7 @@ final class Bootstrap {
      * This method is invoked by {@link Elasticsearch#main(String[])} to startup elasticsearch.
      */
     static void init(
-            final boolean foreground,
+            final boolean foreground, //后台守护线程
             final Path pidFile,
             final boolean quiet,
             final Environment initialEnv) throws BootstrapException, NodeValidationException, UserException {
@@ -338,7 +339,7 @@ final class Bootstrap {
             } catch (IOException e) {
                 throw new BootstrapException(e);
             }
-
+            //启动 es实例
             INSTANCE.start();
 
             if (closeStandardStreams) {

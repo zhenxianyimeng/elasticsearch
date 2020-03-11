@@ -327,7 +327,7 @@ public class Netty4HttpServerTransport extends AbstractLifecycleComponent implem
         boolean success = false;
         try {
             this.serverOpenChannels = new Netty4OpenChannelsHandler(logger);
-
+            //启动http server
             serverBootstrap = new ServerBootstrap();
 
             serverBootstrap.group(new NioEventLoopGroup(workerCount, daemonThreadFactory(settings,

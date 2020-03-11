@@ -259,6 +259,7 @@ public final class NodeEnvironment  implements Closeable {
         try {
             sharedDataPath = environment.sharedDataFile();
             IOException lastException = null;
+            //单台机器es实例个数限制
             int maxLocalStorageNodes = MAX_LOCAL_STORAGE_NODES_SETTING.get(settings);
 
             final AtomicReference<IOException> onCreateDirectoriesException = new AtomicReference<>();

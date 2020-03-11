@@ -613,6 +613,7 @@ public abstract class Node implements Closeable {
             client.initialize(injector.getInstance(new Key<Map<GenericAction, TransportAction>>() {}),
                     () -> clusterService.localNode().getId(), transportService.getRemoteClusterService());
 
+            //注册rest action
             if (NetworkModule.HTTP_ENABLED.get(settings)) {
                 logger.debug("initializing HTTP handlers ...");
                 actionModule.initRestHandlers(() -> clusterService.state().nodes());
@@ -694,7 +695,7 @@ public abstract class Node implements Closeable {
 
         logger.info("starting ...");
         pluginLifecycleComponents.forEach(LifecycleComponent::start);
-
+        //ES 对 google guice做了封装，管理实例，node启动时，分别启动各个组件
         injector.getInstance(MappingUpdatedAction.class).setClient(client);
         injector.getInstance(IndicesService.class).start();
         injector.getInstance(IndicesClusterStateService.class).start();

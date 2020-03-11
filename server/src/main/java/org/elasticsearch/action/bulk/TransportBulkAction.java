@@ -155,7 +155,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
             for (String index : indices) {
                 boolean shouldAutoCreate;
                 try {
-                    shouldAutoCreate = shouldAutoCreate(index, state);
+                    shouldAutoCreate = shouldAutoCreate(index, state); //判断是否需要新建索引
                 } catch (IndexNotFoundException e) {
                     shouldAutoCreate = false;
                     indicesThatCannotBeCreated.put(index, e);
@@ -165,7 +165,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
                 }
             }
             // Step 3: create all the indices that are missing, if there are any missing. start the bulk after all the creates come back.
-            if (autoCreateIndices.isEmpty()) {
+            if (autoCreateIndices.isEmpty()) {//不需要创建index，则直接写数据
                 executeIngestAndBulk(task, bulkRequest, startTime, listener, responses, indicesThatCannotBeCreated);
             } else {
                 final AtomicInteger counter = new AtomicInteger(autoCreateIndices.size());
@@ -176,7 +176,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
                         @Override
                         public void onResponse(CreateIndexResponse result) {
                             //bulk计数器，每次减一，当计数器为0时，批量插入完成
-                            if (counter.decrementAndGet() == 0) {
+                            if (counter.decrementAndGet() == 0) { //索引创建完成后，插入数据
                                 executeIngestAndBulk(task, bulkRequest, startTime, listener, responses, indicesThatCannotBeCreated);
                             }
                         }
@@ -265,7 +265,7 @@ public class TransportBulkAction extends HandledTransportAction<BulkRequest, Bul
     boolean shouldAutoCreate(String index, ClusterState state) {
         return autoCreateIndex.shouldAutoCreate(index, state);
     }
-
+    //创建索引
     void createIndex(String index, TimeValue timeout, ActionListener<CreateIndexResponse> listener) {
         CreateIndexRequest createIndexRequest = new CreateIndexRequest();
         createIndexRequest.index(index);

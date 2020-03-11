@@ -146,6 +146,7 @@ public class PublishClusterStateAction extends AbstractComponent {
             // sadly this is not water tight as it may that a failed diff based publishing to a node
             // will cause a full serialization based on an older version, which may fail after the
             // change has been committed.
+            // 判断增量消息还是全量
             buildDiffAndSerializeStates(clusterChangedEvent.state(), clusterChangedEvent.previousState(),
                     nodesToPublishTo, sendFullVersion, serializedStates, serializedDiffs);
 
@@ -158,6 +159,7 @@ public class PublishClusterStateAction extends AbstractComponent {
         }
 
         try {
+            //数据准备就绪，开始准备发布
             innerPublish(clusterChangedEvent, nodesToPublishTo, sendingController, ackListener, sendFullVersion, serializedStates,
                 serializedDiffs);
         } catch (Discovery.FailedToCommitClusterStateException t) {
@@ -207,10 +209,12 @@ public class PublishClusterStateAction extends AbstractComponent {
 
         sendingController.waitForCommit(discoverySettings.getCommitTimeout());
 
+        //等待第一阶段的返回
         final long commitTime = System.nanoTime() - publishingStartInNanos;
 
         ackListener.onCommit(TimeValue.timeValueNanos(commitTime));
 
+        //第一阶段已返回，开始第二阶段
         try {
             long timeLeftInNanos = Math.max(0, publishTimeout.nanos() - commitTime);
             final BlockingClusterStatePublishResponseHandler publishResponseHandler = sendingController.getPublishResponseHandler();
@@ -297,6 +301,7 @@ public class PublishClusterStateAction extends AbstractComponent {
             // -> no need to compress, we already compressed the bytes
             TransportRequestOptions options = TransportRequestOptions.builder()
                 .withType(TransportRequestOptions.Type.STATE).withCompress(false).build();
+            //transportService发送数据，在handleResponse判断返回结果，如果第一阶段成功，则第二阶段提交commit
             transportService.sendRequest(node, SEND_ACTION_NAME,
                     new BytesTransportRequest(bytes, node.getVersion()),
                     options,
