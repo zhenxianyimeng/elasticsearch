@@ -1170,6 +1170,7 @@ public class InternalEngine extends Engine {
                     Optional.of(earlyResultOnPreFlightError);
         }
 
+        //返回各种策略
         public static IndexingStrategy optimizedAppendOnly(long seqNoForIndexing, long versionForIndexing) {
             return new IndexingStrategy(true, false, true, false, seqNoForIndexing, versionForIndexing, null);
         }

@@ -91,5 +91,5 @@ discovery.zen.minimum_master_nodes: 2
 #
 #action.destructive_requires_name: true
 http.cors.enabled: true
-
+cluster.routing.allocation.disk.watermark.low: 90%
 http.cors.allow-origin: "*"

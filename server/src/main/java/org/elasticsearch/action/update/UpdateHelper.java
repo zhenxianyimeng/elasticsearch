@@ -69,6 +69,7 @@ public class UpdateHelper extends AbstractComponent {
 
     /**
      * Prepares an update request by converting it into an index or delete request or an update response (no action).
+     * 主要分为两步，一步是获取文档，第二步更新z
      */
     public Result prepare(UpdateRequest request, IndexShard indexShard, LongSupplier nowInMillis) {
         final GetResult getResult = indexShard.getService().getForUpdate(request.type(), request.id(), request.version(),
